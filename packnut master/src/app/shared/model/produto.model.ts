@@ -1,5 +1,5 @@
 export class Produto{
-        idProduto: any[];
+        id: any[];
         dataEntrada: string;
         dataFabricacao: string;
         dataVencimento: string;

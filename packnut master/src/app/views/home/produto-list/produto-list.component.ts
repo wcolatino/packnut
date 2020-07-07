@@ -43,7 +43,7 @@ export class ProdutoListComponent implements OnInit {
 
   getProdutos(){
     this.produtoService.getProdutosById('id').subscribe(data => {
-      this.produtosPrevious = data.idProduto;
+      this.produtosPrevious = data.id;
       console.log(this.produtosPrevious);
     });
   }
