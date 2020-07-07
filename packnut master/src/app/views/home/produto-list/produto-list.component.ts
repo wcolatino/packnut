@@ -1,3 +1,5 @@
+import { Produto } from './../../../shared/model/produto.model';
+import { ProdutoService } from './../../../shared/service/produto.service';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { Component, OnInit } from '@angular/core';
 
@@ -28,10 +30,22 @@ export class ProdutoListComponent implements OnInit {
     alert('date click! ' + arg.dateStr)
   }
 
+  produtosPrevious: Produto[]; //variável (listagem) produtoCadastrado do tipo produto;
 
-  constructor() { }
+
+  constructor(
+    public produtoService: ProdutoService
+  ) { }
 
   ngOnInit(): void {
+    this.getProdutos();
   }
 
+  getProdutos(){
+    this.produtoService.getProdutosById('id').subscribe(data => {
+      this.produtosPrevious = data.idProduto;
+      console.log(this.produtosPrevious);
+    });
+  }
 }
+

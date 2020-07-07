@@ -1,5 +1,5 @@
-/*export class ResponsePageable{
-    idProduto: string;
+export class ResponsePageable{
+    idProduto: any[];
     dataEntrada: string;
     dataFabricacao: string;
     dataVencimento: string;
@@ -10,4 +10,4 @@
     qdtVendida: string;
     responsavel: string;
     temperatura: string;
-}*/
+}

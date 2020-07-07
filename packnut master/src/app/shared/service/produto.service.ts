@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProdutoService {
 
-  apiUrl = 'http://localhost:8080/api/';
+  apiUrl = 'http://localhost:8080/api';
 
   //Será usado para requisições via POST;
   httpOptions = {
@@ -22,6 +22,6 @@ export class ProdutoService {
   ) { }
 
     public getProdutosById(id: string): Observable<Produto>{
-      return this.httpClient.get<Produto>(this.apiUrl + '/api' + id);
+      return this.httpClient.get<Produto>(this.apiUrl + '/produtos/' + id);
     }
 }
