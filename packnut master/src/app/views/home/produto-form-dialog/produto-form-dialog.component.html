@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Novo Produto:</h1>
+
+<div mat-dialog-content>
+    <form class="example-form" [formGroup]="produtoForm">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nome:</mat-label>
+            <input matInput formControlName="marca" name="marca">
+          </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Marca:</mat-label>
+              <input matInput formControlName="nome" name="nome">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Data de Fabricação:</mat-label>
+              <input matInput formControlName="dataFabricacao" name="dataFabricacao">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Data de Vencimento:</mat-label>
+                <input matInput formControlName="dataVencimento" name="dataVencimento">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Data de Entrada:</mat-label>
+                <input matInput formControlName="dataEntrada" name="dataEntrada">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Lote:</mat-label>
+                <input matInput formControlName="lote" name="lote">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Responsável::</mat-label>
+              <input matInput formControlName="responsavel" name="responsavel">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Temperatura:</mat-label>
+              <input matInput formControlName="temperatura" name="temperatura">
+          </mat-form-field>
+    </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="createProduto()">Add Produto</button>
+  <button mat-button (click)="cancel()">Cancelar</button>
+</div>
+

@@ -21,7 +21,16 @@ export class ProdutoService {
     private httpClient: HttpClient
   ) { }
 
-    public getProdutosById(id: string): Observable<Produto>{
-      return this.httpClient.get<Produto>(this.apiUrl + '/produtos/' + id);
+    public getProdutosById(id) {
+      // return this.httpClient.get<Produto>(this.apiUrl + '/produtos/' + id);
+      return this.httpClient.get(this.apiUrl + '/produtos/' + id);
+    }
+    
+    public getAll() {
+      return this.httpClient.get(this.apiUrl + '/produtos/');
+    }
+
+    public postProdutos(produto : any): Observable<Produto>{
+      return this.httpClient.post<any>(this.apiUrl, produto, this.httpOptions);
     }
 }

@@ -23,6 +23,13 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ProdutoFormDialogComponent } from './views/home/produto-form-dialog/produto-form-dialog.component';
+import {MatInputModule} from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -37,7 +44,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   declarations: [
     AppComponent,
     HomeComponent,
-    ProdutoListComponent
+    ProdutoListComponent,
+    ProdutoFormDialogComponent
     //MenuComponent
   ],
   imports: [
@@ -53,7 +61,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatListModule,
     MatTabsModule,
     FullCalendarModule,
-    
+    MatDialogModule,
+    MatInputModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

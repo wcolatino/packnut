@@ -1,8 +1,8 @@
-export class Produto{
-        id: any[];
-        dataEntrada: string;
+export class Produto {
+        idProduto: any;
         dataFabricacao: string;
         dataVencimento: string;
+        dataEntrada: string;
         lote: string;
         marca: string;
         nome: string;

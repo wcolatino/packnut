@@ -1,5 +1,8 @@
 import { CalendarOptions } from '@fullcalendar/angular';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ProdutoFormDialogComponent } from './produto-form-dialog/produto-form-dialog.component';
+
 
 @Component({
   selector: 'app-home',
@@ -12,9 +15,20 @@ export class HomeComponent implements OnInit {
     initialView: 'dayGridMonth'
   };
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog //Inicia a isntancia do MatDialog
+  ) { }
 
   ngOnInit(): void {
   }
 
+  addProduto(): void {
+    const dialogRef = this.dialog.open(ProdutoFormDialogComponent, {
+      minWidth: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }

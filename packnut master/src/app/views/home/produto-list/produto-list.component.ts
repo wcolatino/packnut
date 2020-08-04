@@ -15,7 +15,7 @@ export class ProdutoListComponent implements OnInit {
     initialView: 'dayGridMonth',
     dateClick: this.handleDateClick.bind(this), // bind is important!
     events: [
-      { title: 'event 1', date: '2020-07-01' },
+      { title: 'event 1', date: '2020-07-02' },
       { title: 'event 2', date: '2020-07-01' },
       { title: 'event 1', date: '2020-07-01' },
       { title: 'event 2', date: '2020-07-01' },
@@ -30,7 +30,7 @@ export class ProdutoListComponent implements OnInit {
     alert('date click! ' + arg.dateStr)
   }
 
-  produtosPrevious: Produto[]; //variável (listagem) produtoCadastrado do tipo produto;
+  varProdutos: {}; //variável (listagem) produtoCadastrado do tipo produto;
 
 
   constructor(
@@ -42,9 +42,11 @@ export class ProdutoListComponent implements OnInit {
   }
 
   getProdutos(){
-    this.produtoService.getProdutosById('id').subscribe(data => {
-      this.produtosPrevious = data.id;
-      console.log(this.produtosPrevious);
+    this.produtoService.getProdutosById('1').subscribe(data => {
+      console.log(data);
+
+      this.varProdutos = data;
+      // console.log(this.varProdutos);
     });
   }
 }
