@@ -10,43 +10,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoListComponent implements OnInit {
 
+  produtos: Produto[];
 
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this), // bind is important!
-    events: [
-      { title: 'event 1', date: '2020-07-02' },
-      { title: 'event 2', date: '2020-07-01' },
-      { title: 'event 1', date: '2020-07-01' },
-      { title: 'event 2', date: '2020-07-01' },
-      { title: 'event 1', date: '2020-07-01' },
-      { title: 'event 2', date: '2020-07-01' },
-      { title: 'event 1', date: '2020-07-01' },
-      { title: 'event 2', date: '2020-07-01' },
-    ]
-  };
+  calendarOptions: CalendarOptions;
 
   handleDateClick(arg) {
     alert('date click! ' + arg.dateStr)
   }
 
-  varProdutos: {}; //variável (listagem) produtoCadastrado do tipo produto;
-
-
-  constructor(
-    public produtoService: ProdutoService
-  ) { }
+  constructor(public produtoService: ProdutoService) { 
+    this.produtoService.onUpdateList().subscribe(() => this.getProdutos());
+  }
 
   ngOnInit(): void {
-    this.getProdutos();
+    
   }
 
   getProdutos(){
-    this.produtoService.getProdutosById('1').subscribe(data => {
+    this.produtoService.getAll().subscribe(data => {
       console.log(data);
+      this.produtos = data;
 
-      this.varProdutos = data;
-      // console.log(this.varProdutos);
+
+      const eventos = [];
+
+      data.forEach(produto => {
+
+        eventos.push(...[
+          {
+            title: produto.nome + '(Entrada)',
+            date: produto.dataEntrada
+          },
+          {
+            title: produto.nome + '(Fabricação)',
+            date: produto.dataFabricacao
+          },
+          {
+            title: produto.nome + '(Vencimento)',
+            date: produto.dataVencimento
+          }
+        ]);
+
+      })
+
+      this.calendarOptions = {
+        initialView: 'dayGridMonth',
+        dateClick: this.handleDateClick.bind(this), // bind is important!
+        events: [...eventos]
+      };
     });
   }
 }
