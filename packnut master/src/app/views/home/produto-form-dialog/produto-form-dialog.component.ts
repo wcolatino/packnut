@@ -2,6 +2,7 @@ import { ProdutoService } from './../../../shared/service/produto.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Produto } from 'src/app/shared/model/produto.model';
 
 @Component({
   selector: 'app-produto-form-dialog',
@@ -23,7 +24,7 @@ export class ProdutoFormDialogComponent implements OnInit {
     this.produtoForm = this.fb.group({
       nome: ['',[Validators.required]],
       marca: ['',[Validators.required]],
-      dataFabricacao: ['01-02-2020',[Validators.required]],
+      dataFabricacao: ['2020-08-01',[Validators.required]],
       dataVencimento: ['',[Validators.required]],
       dataEntrada: ['',[Validators.required]],
       lote: ['',[Validators.required]],
@@ -33,10 +34,11 @@ export class ProdutoFormDialogComponent implements OnInit {
   }
 
 
-  createProduto(){
-    this.rest.postProdutos(this.produtoForm.value).subscribe(result => {});
-    this.dialogRef.close();
-    this.produtoForm.reset();
+  createProduto() {
+    this.rest.postProduto(this.produtoForm.value as Produto).subscribe(result => {
+      this.dialogRef.close();
+      this.produtoForm.reset();
+    });
   }
 
   cancel(): void {

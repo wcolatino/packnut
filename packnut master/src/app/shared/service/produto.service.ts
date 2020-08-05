@@ -1,7 +1,7 @@
 import { Produto } from './../model/produto.model';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClientModule, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +10,30 @@ export class ProdutoService {
 
   apiUrl = 'http://localhost:8080/api';
 
-  //Será usado para requisições via POST;
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
+  private _updateList = new Subject<any>();
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
-    public getProdutosById(id) {
-      // return this.httpClient.get<Produto>(this.apiUrl + '/produtos/' + id);
-      return this.httpClient.get(this.apiUrl + '/produtos/' + id);
-    }
-    
-    public getAll() {
-      return this.httpClient.get(this.apiUrl + '/produtos/');
-    }
 
-    public postProdutos(produto : any): Observable<Produto>{
-      return this.httpClient.post<any>(this.apiUrl, produto, this.httpOptions);
-    }
+  public onUpdateList(): Observable<any> {
+    return this._updateList.asObservable();
+  }
+
+  public updateList() {
+    this._updateList.next();
+  }
+
+  public getProdutoById(id: number): Observable<Produto> {
+    return this.httpClient.get<Produto>(this.apiUrl + '/produtos/' + id);
+  }
+    
+  public getAll(): Observable<Produto[]>  {
+    return this.httpClient.get<Produto[]>(this.apiUrl + '/produtos');
+  }
+
+  public postProduto(produto : Produto): Observable<Produto> {
+    return this.httpClient.post<any>(this.apiUrl + '/produtos', produto);
+  }
 }
