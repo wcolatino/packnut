@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.produtoService.updateList();
+    //this.produtoService.updateList();
   }
 
   addProduto(): void {
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      this.produtoService.updateList();
+      //this.produtoService.updateList();
     });
   }
 }

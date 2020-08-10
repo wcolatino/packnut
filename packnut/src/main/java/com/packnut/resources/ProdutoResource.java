@@ -2,6 +2,8 @@ package com.packnut.resources;
 
 import com.packnut.models.Produto;
 import com.packnut.repository.ProdutoRepository;
+import com.packnut.services.ProdutoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +14,11 @@ import java.util.List;
 public class ProdutoResource {
 
     private final ProdutoRepository produtoRepository;
+    private final ProdutoService produtoService;
 
-    public ProdutoResource(ProdutoRepository produtoRepository) {
+    public ProdutoResource(ProdutoRepository produtoRepository, ProdutoService produtoService) {
         this.produtoRepository = produtoRepository;
+        this.produtoService = produtoService;
     }
 
     @GetMapping
@@ -29,7 +33,7 @@ public class ProdutoResource {
 
     @PostMapping
     public Produto salvarProduto(@RequestBody Produto produto) {
-        return produtoRepository.save(produto);
+    	return this.produtoService.salvarProduto(produto);
     }
 
     @DeleteMapping

@@ -19,11 +19,11 @@ export class ProdutoListComponent implements OnInit {
   }
 
   constructor(public produtoService: ProdutoService) { 
-    this.produtoService.onUpdateList().subscribe(() => this.getProdutos());
   }
 
+
   ngOnInit(): void {
-    
+    this.getProdutos();
   }
 
   getProdutos(){
