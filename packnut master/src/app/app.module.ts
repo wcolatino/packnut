@@ -28,6 +28,10 @@ import { ProdutoFormDialogComponent } from './views/home/produto-form-dialog/pro
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { ProdutoTableComponent } from './views/home/produto-table/produto-table.component';
+import {MatSort} from '@angular/material/sort';
+
 
 
 
@@ -45,7 +49,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     AppComponent,
     HomeComponent,
     ProdutoListComponent,
-    ProdutoFormDialogComponent
+    ProdutoFormDialogComponent,
+    ProdutoTableComponent
     //MenuComponent
   ],
   imports: [
@@ -65,7 +70,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatInputModule,
     MatNativeDateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
