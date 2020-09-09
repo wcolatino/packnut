@@ -31,8 +31,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ProdutoTableComponent implements OnInit {
   
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['nome', 'marca', 'dataFabricacao', 'dataVencimento', 'dataEntrada', 'lote', 'responsavel', 'temperatura'];
+  produtosTable = ELEMENT_DATA;
 
   constructor() { }
 

@@ -1,31 +1,53 @@
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-    </ng-container>
+<mat-table [dataSource]="produtosTable" class="mat-elevation-z8">
+
   
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.nome}} </mat-cell>
     </ng-container>
   
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    <ng-container matColumnDef="marca">
+      <mat-header-cell *matHeaderCellDef> Marca </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.marca}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="dataFabricacao">
+      <mat-header-cell *matHeaderCellDef> Dt. Fabricação </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.dataFabricacao}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="dataVencimento">
+      <mat-header-cell *matHeaderCellDef> Dt. Vencimento </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.dataVencimento}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dataEntrada">
+      <mat-header-cell *matHeaderCellDef> Dt. Entrada </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.dataEntrada}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lote">
+      <mat-header-cell *matHeaderCellDef> Lote </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.lote}} </mat-cell>
+    </ng-container>
       
+    <ng-container matColumnDef="responsavel">
+      <mat-header-cell *matHeaderCellDef> Responsável </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.responsavel}} </mat-cell>
+    </ng-container>
   
+    <ng-container matColumnDef="temperatura">
+      <mat-header-cell *matHeaderCellDef> Temperatura </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> {{produto.temperatura}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acao">
+      <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
+      
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
