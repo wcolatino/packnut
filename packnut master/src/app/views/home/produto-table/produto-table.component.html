@@ -45,7 +45,7 @@
 
     <ng-container matColumnDef="acao">
       <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
-      
+      <mat-cell *matCellDef="let produto"> <button mat-flat-button color="warn" (click) = "deleteProduto(produto.idProduto)">Deletar</button> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -36,9 +36,9 @@ public class ProdutoResource {
     	return this.produtoService.salvarProduto(produto);
     }
 
-    @DeleteMapping
-    public void deletarProduto(@RequestBody Produto produto) {
-        produtoRepository.delete(produto);
+    @DeleteMapping ("/{id}")
+    public void deletarProduto(@PathVariable(value = "id") long id) {
+        produtoRepository.deleteById(id);
     }
 
     @PutMapping

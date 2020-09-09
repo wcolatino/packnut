@@ -25,7 +25,7 @@ export class ProdutoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.atualizarCalendario();
-  }
+  } 
   atualizarCalendario() {
 
 
@@ -46,8 +46,6 @@ export class ProdutoListComponent implements OnInit {
 
     });
   }
-
-
 
 }
 

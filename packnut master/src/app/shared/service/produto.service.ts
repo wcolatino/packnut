@@ -33,4 +33,8 @@ export class ProdutoService {
     public postProduto(produto : any): Observable<Produto>{
       return this.httpClient.post<any>(this.apiUrl + '/produtos/', produto, this.httpOptions);
     }
+
+    public deleteProduto (id): Observable <void>{
+      return this.httpClient.delete<void>(this.apiUrl + '/produtos/' + id);
+    }
 }
