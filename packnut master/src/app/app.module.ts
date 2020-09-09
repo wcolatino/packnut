@@ -30,7 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { ProdutoTableComponent } from './views/home/produto-table/produto-table.component';
-import {MatSort} from '@angular/material/sort';
+
 
 
 

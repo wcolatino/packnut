@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 export interface PeriodicElement {
   name: string;
@@ -30,7 +33,7 @@ export class ProdutoTableComponent implements OnInit {
   
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  
+
   constructor() { }
 
   ngOnInit(): void {

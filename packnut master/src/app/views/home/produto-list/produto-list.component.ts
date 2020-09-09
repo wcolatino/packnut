@@ -1,7 +1,7 @@
 import { Produto } from './../../../shared/model/produto.model';
 import { ProdutoService } from './../../../shared/service/produto.service';
-import { CalendarOptions } from '@fullcalendar/angular';
-import { Component, OnInit } from '@angular/core';
+import { CalendarOptions, Calendar } from '@fullcalendar/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-produto-list',
@@ -12,53 +12,42 @@ export class ProdutoListComponent implements OnInit {
 
   produtos: Produto[];
 
+
   calendarOptions: CalendarOptions;
 
   handleDateClick(arg) {
     alert('date click! ' + arg.dateStr)
   }
 
-  constructor(public produtoService: ProdutoService) { 
+  constructor(public produtoService: ProdutoService) {
   }
 
 
   ngOnInit(): void {
-    this.getProdutos();
+    this.atualizarCalendario();
   }
-
-  getProdutos(){
-    this.produtoService.getAll().subscribe(data => {
-      console.log(data);
-      this.produtos = data;
+  atualizarCalendario() {
 
 
-      const eventos = [];
+    this.produtoService.getAll().subscribe((resultado) => {
 
-      data.forEach(produto => {
-
-        eventos.push(...[
-          {
-            title: produto.nome + '(Entrada)',
-            date: produto.dataEntrada
-          },
-          {
-            title: produto.nome + '(Fabricação)',
-            date: produto.dataFabricacao
-          },
-          {
-            title: produto.nome + '(Vencimento)',
-            date: produto.dataVencimento
-          }
-        ]);
-
-      })
+      const resultadoMapeado = resultado.map(Produto => {
+        return {
+          title: Produto.nome,
+          date: Produto.dataVencimento
+        }
+      });
 
       this.calendarOptions = {
         initialView: 'dayGridMonth',
         dateClick: this.handleDateClick.bind(this), // bind is important!
-        events: [...eventos]
-      };
+        events: resultadoMapeado
+      }
+
     });
   }
+
+
+
 }
 

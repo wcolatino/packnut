@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProdutoService {
 
-  apiUrl = 'http://localhost:8080/api/produtos';
+  apiUrl = 'http://localhost:8080/api/';
 
   //Será usado para requisições via POST;
   httpOptions = {
@@ -31,6 +31,6 @@ export class ProdutoService {
     }
 
     public postProduto(produto : any): Observable<Produto>{
-      return this.httpClient.post<any>(this.apiUrl, produto, this.httpOptions);
+      return this.httpClient.post<any>(this.apiUrl + '/produtos/', produto, this.httpOptions);
     }
 }

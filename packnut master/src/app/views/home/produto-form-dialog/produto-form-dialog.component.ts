@@ -38,6 +38,7 @@ export class ProdutoFormDialogComponent implements OnInit {
     this.rest.postProduto(this.produtoForm.value as Produto).subscribe(result => {
       this.dialogRef.close();
       this.produtoForm.reset();
+      
     });
   }
 
