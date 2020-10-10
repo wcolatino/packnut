@@ -1,7 +1,8 @@
+import { ProdutoTableComponent } from './../produto-table/produto-table.component';
 import { Produto } from './../../../shared/model/produto.model';
 import { ProdutoService } from './../../../shared/service/produto.service';
 import { CalendarOptions, Calendar } from '@fullcalendar/angular';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-produto-list',
@@ -12,12 +13,18 @@ export class ProdutoListComponent implements OnInit {
 
   produtos: Produto[];
 
+  @Output()
+  editarEmitter = new EventEmitter();
+
+  @ViewChild(ProdutoTableComponent)
+  produtoTable: ProdutoTableComponent;
+
 
   calendarOptions: CalendarOptions;
 
-  handleDateClick(arg) {
-    alert('date click! ' + arg.dateStr)
-  }
+  // handleDateClick(arg) {
+  //   alert('date click! ' + arg.dateStr)
+  // }
 
   constructor(public produtoService: ProdutoService) {
   }
@@ -40,11 +47,14 @@ export class ProdutoListComponent implements OnInit {
 
       this.calendarOptions = {
         initialView: 'dayGridMonth',
-        dateClick: this.handleDateClick.bind(this), // bind is important!
+        //dateClick: this.handleDateClick.bind(this), // bind is important!
         events: resultadoMapeado
       }
-
     });
+  }
+
+  editarProduto(id){
+    this.editarEmitter.emit(id);
   }
 
 }

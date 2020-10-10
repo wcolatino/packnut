@@ -1,8 +1,9 @@
 <mat-toolbar>
     <mat-toolbar-row style="font-size: 1.5rem; height: 80px;">
-      <span>PackNut<mat-icon>date_range</mat-icon></span>
+      <!-- <span>PackNut<mat-icon>date_range</mat-icon></span> -->
+      <img src="assets/img/logo.jpeg" width="100">
       <span class="example-spacer"></span>
       <button mat-raised-button (click)="addProduto()"><mat-icon>add</mat-icon>Produto</button>
     </mat-toolbar-row>
   </mat-toolbar>
-  <app-produto-list></app-produto-list> <!-- FULL CALENDAR-->
+  <app-produto-list (editarEmitter) = "editarProduto($event)"></app-produto-list> <!-- FULL CALENDAR-->

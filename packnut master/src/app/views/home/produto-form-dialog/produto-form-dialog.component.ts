@@ -1,6 +1,6 @@
 import { ProdutoService } from './../../../shared/service/produto.service';
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Produto } from 'src/app/shared/model/produto.model';
 
@@ -17,20 +17,31 @@ export class ProdutoFormDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private rest: ProdutoService,
-    public dialogRef: MatDialogRef<ProdutoFormDialogComponent>
+    public dialogRef: MatDialogRef<ProdutoFormDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
     this.produtoForm = this.fb.group({
+      idProduto: [],
       nome: ['',[Validators.required]],
       marca: ['',[Validators.required]],
-      dataFabricacao: ['2020-08-01',[Validators.required]],
-      dataVencimento: ['',[Validators.required]],
-      dataEntrada: ['',[Validators.required]],
+      dataFabricacao: ['Ano-Mês-Dia',[Validators.required]],
+      dataVencimento: ['Ano-Mês-Dia',[Validators.required]],
+      dataEntrada: ['Ano-Mês-Dia',[Validators.required]],
       lote: ['',[Validators.required]],
       responsavel: ['',[Validators.required]],
       temperatura: ['',[Validators.required]],
-    })
+      qtdVendida: ['',[Validators.required]],
+      qtdDescarte: ['',[Validators.required]]
+    });
+
+
+    if(this.data != null){
+
+      this.produtoForm.patchValue(this.data);
+    }
+
   }
 
 

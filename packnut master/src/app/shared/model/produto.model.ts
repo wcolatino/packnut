@@ -6,8 +6,8 @@ export class Produto {
         lote: string;
         marca: string;
         nome: string;
-        qdtDescarte: string;
-        qdtVendida: string;
         responsavel: string;
         temperatura: string;
+        qdtDescarte: string;
+        qdtVendida: string;
 }

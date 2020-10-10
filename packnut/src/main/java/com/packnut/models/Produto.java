@@ -1,5 +1,7 @@
 package com.packnut.models;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,33 +9,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TB_PRODUTO")
+@Table(name = "TB_PRODUTO")
 public class Produto {
-	
+
 	private static final long seriaVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO) //Gerada automaticamente pelo Banco de Dados;
+	@GeneratedValue(strategy = GenerationType.AUTO) // Gerada automaticamente pelo Banco de Dados;
 	private long idProduto;
-	
-	private String dataFabricacao;
-	
-	private String dataVencimento;
-	
-	private String dataEntrada;
-	
+
+	private LocalDate dataFabricacao;
+
+	private LocalDate dataVencimento;
+
+	private LocalDate dataEntrada;
+
 	private String lote;
-	
+
 	private String marca;
-	
+
 	private String nome;
-	
+
 	private int qdtDescarte;
-	
+
 	private int qdtVendida;
-	
+
 	private String responsavel;
-	
+
 	private double temperatura;
 
 	public long getIdProduto() {
@@ -44,29 +46,27 @@ public class Produto {
 		this.idProduto = idProduto;
 	}
 
-	
-
-	public String getDataFabricacao() {
+	public LocalDate getDataFabricacao() {
 		return dataFabricacao;
 	}
 
-	public void setDataFabricacao(String dataFabricacao) {
+	public void setDataFabricacao(LocalDate dataFabricacao) {
 		this.dataFabricacao = dataFabricacao;
 	}
 
-	public String getDataVencimento() {
+	public LocalDate getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(String dataVencimento) {
+	public void setDataVencimento(LocalDate dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public String getDataEntrada() {
+	public LocalDate getDataEntrada() {
 		return dataEntrada;
 	}
 
-	public void setDataEntrada(String dataEntrada) {
+	public void setDataEntrada(LocalDate dataEntrada) {
 		this.dataEntrada = dataEntrada;
 	}
 
@@ -125,11 +125,5 @@ public class Produto {
 	public void setTemperatura(double temperatura) {
 		this.temperatura = temperatura;
 	}
-	
-	
-
-			
-	
-	
 
 }

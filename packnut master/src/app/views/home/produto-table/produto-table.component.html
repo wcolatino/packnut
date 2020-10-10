@@ -43,9 +43,23 @@
       <mat-cell *matCellDef="let produto"> {{produto.temperatura}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="qtdVendida">
+        <mat-header-cell *matHeaderCellDef> Qtd. Vendida </mat-header-cell>
+        <mat-cell *matCellDef="let produto"> {{produto.qtdVendida}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="qtdDescarte">
+          <mat-header-cell *matHeaderCellDef> Qtd. Descarte </mat-header-cell>
+          <mat-cell *matCellDef="let produto"> {{produto.qtdDescarte}} </mat-cell>
+        </ng-container>
+
     <ng-container matColumnDef="acao">
-      <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
-      <mat-cell *matCellDef="let produto"> <button mat-flat-button color="warn" (click) = "deleteProduto(produto.idProduto)">Deletar</button> </mat-cell>
+      <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+      <mat-cell *matCellDef="let produto"> 
+        <button mat-flat-button color="primary" (click) = "updateProduto(produto.idProduto)" >Editar </button> 
+        <br>
+        <button mat-flat-button color="warn" (click) = "deleteProduto(produto.idProduto)">Deletar</button> 
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -37,6 +37,25 @@ export class HomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.produtoList.atualizarCalendario();
+      this.produtoList.produtoTable.atualizardataSource();
+    });
+  }
+
+
+
+  editarProduto(id) {
+    this.produtoService.getProdutosById(id).subscribe((produto) => {
+      
+      const dialogRef = this.dialog.open(ProdutoFormDialogComponent, {
+        minWidth: '600px',
+        data : produto
+      });
+
+      dialogRef.afterClosed().subscribe(() => {
+      this.produtoList.atualizarCalendario();
+      this.produtoList.produtoTable.atualizardataSource();
+    });
+
     });
   }
 }

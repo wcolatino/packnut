@@ -23,8 +23,10 @@ export class ProdutoTableComponent implements OnInit {
   
   @Output()
   abacaxi = new EventEmitter();
+  @Output()
+  editarEmitter = new EventEmitter();
 
-  displayedColumns: string[] = ['nome', 'marca', 'dataFabricacao', 'dataVencimento', 'dataEntrada', 'lote', 'responsavel', 'temperatura', 'acao'];
+  displayedColumns: string[] = ['nome', 'marca', 'dataFabricacao', 'dataVencimento', 'dataEntrada', 'lote', 'responsavel', 'temperatura', 'qtdVendida', 'qtdDescarte', 'acao'];
   produtosTable = [];
 
   constructor(public produtoService: ProdutoService) { }
@@ -34,9 +36,11 @@ export class ProdutoTableComponent implements OnInit {
   }
 
   atualizardataSource(){
+    //debugger;
+    console.log('ENTROU NO ATUALIZAR DATASOURCE');
     this.produtoService.getAll().subscribe(resultado =>{
       this.produtosTable = resultado;
-    })
+    });
   }
 
   deleteProduto (id){
@@ -45,5 +49,12 @@ export class ProdutoTableComponent implements OnInit {
       this.abacaxi.emit();
     });
   }
+
+  updateProduto(id){
+    this.editarEmitter.emit(id); //COmunicando com o componente ProdutoList parametrizando o ID;
+  }
+  
+  
+  
 
 }

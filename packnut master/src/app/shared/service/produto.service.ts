@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProdutoService {
-
   apiUrl = 'http://localhost:8080/api/';
+  //apiUrl = 'http://localhost:8080/packnut/api/';
+  //apiUrl = 'http://localhost:8080/packnut-0.0.1-SNAPSHOT/api/';
 
   //Será usado para requisições via POST;
   httpOptions = {
@@ -37,4 +38,10 @@ export class ProdutoService {
     public deleteProduto (id): Observable <void>{
       return this.httpClient.delete<void>(this.apiUrl + '/produtos/' + id);
     }
+
+    // public updateProduto (id) : Observable <Produto> {
+    //   return this.
+
+    // }
+
 }

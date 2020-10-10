@@ -19,7 +19,7 @@ public class ProdutoService {
 	}
 
 	@Transactional
-	public Produto salvarProduto(@RequestBody Produto produto) {
+	public Produto salvarProduto(Produto produto) {
 		return produtoRepository.save(produto);
 	}
 }
